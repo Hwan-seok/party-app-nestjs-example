@@ -17,14 +17,14 @@ export const databaseProviders = [
         password: configService.get('MYSQL_PASSWORD'),
         database: configService.get('MYSQL_DATABASE'),
         logQueryParameters: true,
-        logging: (sql, timing) => {
+        logging: sql => {
           Logger.debug(sqlFormatter.format(sql));
         },
         timezone: '+09:00',
       });
       sequelize.addModels([PartyEntity, PartyReservableTimeEntity]);
 
-      await sequelize.sync({});
+      await sequelize.sync({ force: true });
 
       return sequelize;
     },

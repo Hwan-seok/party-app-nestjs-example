@@ -1,4 +1,5 @@
-import { Table, Model, Column, DataType } from 'sequelize-typescript';
+import { Table, Model, Column, DataType, HasMany } from 'sequelize-typescript';
+import { PartyReservableTimeEntity } from './partyTime.entity';
 
 @Table({
   tableName: 'party',
@@ -16,4 +17,7 @@ export class PartyEntity extends Model<PartyEntity> {
 
   @Column({ type: DataType.STRING(3000) })
   img: string;
+
+  @HasMany(() => PartyReservableTimeEntity)
+  partyTime: PartyReservableTimeEntity;
 }

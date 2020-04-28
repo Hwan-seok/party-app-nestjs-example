@@ -9,9 +9,15 @@ export class ConfigService {
     const dirName = path.dirname(__dirname);
     console.log('Running Env Is : ' + process.env.NODE_ENV);
     console.log('Running Dir Name is : ' + dirName);
-    this.envConfig = dotenv.parse(
-      fs.readFileSync(path.join(dirName, '/env/') + filePath),
-    );
+    if (dirName.endsWith('modules')) {
+      this.envConfig = dotenv.parse(
+        fs.readFileSync(path.join(dirName, '../../env/') + filePath),
+      );
+    } else {
+      this.envConfig = dotenv.parse(
+        fs.readFileSync(path.join(dirName, '/env/') + filePath),
+      );
+    }
 
     console.log(this.envConfig);
   }

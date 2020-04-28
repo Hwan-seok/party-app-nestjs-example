@@ -7,6 +7,13 @@ How To Start
 ```
 git clone this
 
+#### config env file
+goto env/local.env and config yourself
+
+#### create database on local
+create database test
+
+#### install dependency and start - it will automatically create essential tables
 npm install
 npm start:n
 
